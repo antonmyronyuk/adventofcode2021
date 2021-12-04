@@ -14,7 +14,6 @@ def invert_num(num) -> str:
 
 
 res = ''.join(most_common(NUMS, i) for i in range(SIZE))
-inverted = invert_num(res)
 
 a = int(res, 2)
 b = int(invert_num(res), 2)
