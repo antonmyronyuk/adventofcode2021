@@ -9,6 +9,10 @@ def most_common(nums, pos) -> str:
     return '1' if ones >= zeros else '0'
 
 
+def invert_num(num) -> str:
+    return ''.join('1' if char == '0' else '0' for char in num)
+
+
 def get_oxygen_generator_rating():
     nums_left = NUMS
     for i in range(SIZE):
@@ -36,6 +40,18 @@ def get_co2_scrubber_rating():
     return last_skipped_num
 
 
-a = int(get_oxygen_generator_rating(), 2)
-b = int(get_co2_scrubber_rating(), 2)
-print(a * b)
+def part1():
+    res = ''.join(most_common(NUMS, i) for i in range(SIZE))
+    a = int(res, 2)
+    b = int(invert_num(res), 2)
+    print(a * b)
+
+
+def part2():
+    a = int(get_oxygen_generator_rating(), 2)
+    b = int(get_co2_scrubber_rating(), 2)
+    print(a * b)
+
+
+part1()
+part2()
