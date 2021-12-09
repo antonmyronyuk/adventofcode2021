@@ -37,14 +37,12 @@ def get_minimal_points():
 
 def get_basin_size(start_i, start_j):
     size = 0
-    queue = deque()
-    visited = set()
-    queue.append((start_i, start_j))
-    visited.add((start_i, start_j))
+    queue = deque([(start_i, start_j)])
+    visited = {(start_i, start_j)}
 
     while queue:
         size += 1
-        i, j = queue.pop()
+        i, j = queue.popleft()
         for shift_i, shift_j in SHIFTS:
             next_i, next_j = i + shift_i, j + shift_j
             if (
