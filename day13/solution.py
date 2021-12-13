@@ -22,8 +22,6 @@ for x, y in points:
     field[y][x] = 1
 
 
-xf = folds[0][1]
-
 def part1():
     res = 0
     axis, _ = folds[0]
