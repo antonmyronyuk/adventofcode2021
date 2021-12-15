@@ -25,6 +25,7 @@ def get_score(days):
             next_counts[new_pair1] += count
             next_counts[new_pair2] += count
             next_counts[pair] -= count
+
         pair_counts = next_counts
 
     # each char in result string is counted twice (instead of first and last)
