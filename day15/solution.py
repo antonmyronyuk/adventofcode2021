@@ -33,16 +33,18 @@ def get_lowest_total_risk(field):
     N = len(field)
     M = len(field[0])
     risk = [[math.inf] * M for _ in range(N)]
+    visited = [[False] * M for _ in range(N)]
 
     queue = [(0, (0, 0))]  # heap of (total_risk, (i, j))
     risk[0][0] = 0
 
     while queue:
         _, (i, j) = heappop(queue)  # point with minimal total risk
+        visited[i][j] = True
 
         for si, sj in (0, 1), (1, 0), (0, -1), (-1, 0):
             ni, nj = i + si, j + sj
-            if ni < 0 or ni >= N or nj < 0 or nj >= M:
+            if ni < 0 or ni >= N or nj < 0 or nj >= M or visited[ni][nj]:
                 continue
 
             new_risk = risk[i][j] + field[ni][nj]
