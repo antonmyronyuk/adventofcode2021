@@ -27,17 +27,19 @@ def is_matching_velocity(x_velocity, y_velocity):
         if x > x_finish or y < y_start:
             return False
 
-        x += x_velocity
         y += y_velocity
-        x_velocity -= 1 if x_velocity else 0
         y_velocity -= 1
+        if x_velocity:
+            x += x_velocity
+            x_velocity -= 1
 
 
 def get_matching_velocities_count():
     res = 0
     for x_velocity in range(min_x_velocity, max_x_velocity + 1):
         for y_velocity in range(min_y_velocity, max_y_velocity + 1):
-            res += is_matching_velocity(x_velocity, y_velocity)
+            if is_matching_velocity(x_velocity, y_velocity):
+                res += 1
 
     return res
 
